@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start-dev": "nodemon dist/app.js",
-    "start": "node dist/app.js",
+    "start": "node build/app.js",
     "build": "tsc",
     "compile": "tsc -w",
     "test": "jest",
