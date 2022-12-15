@@ -6,8 +6,8 @@
   "author": "Oluwaseyi <oluwaseyi.makinde@decagon.dev>",
   "license": "MIT",
   "scripts": {
-    "start-dev": "nodemon dist/app.js",
-    "start": "node build/app.js",
+    "start-dev": "nodemon build/app.js",
+    "start": "node app.js",
     "build": "tsc",
     "compile": "tsc -w",
     "test": "jest",
