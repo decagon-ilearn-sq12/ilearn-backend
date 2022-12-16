@@ -25,7 +25,7 @@ app.use(cookieParser());
 //routes
 app.use("/users", usersRouter);
 app.use("/", (req, res) => {
-  res.status(200).send("api is running");
+  res.status(200).send("api is running...");
 });
 
 // not found error handler
