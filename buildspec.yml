@@ -19,4 +19,4 @@ artifacts:
     - 'build/**/*'
     - '.platform/**/*' # AWS Elastic Beanstalk configuration files
     - '.ebextensions/**/*' # AWS Elastic Beanstalk configuration files
-  discard-paths: yes
+  discard-paths: no
