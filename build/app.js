@@ -16,7 +16,6 @@ dotenv_1.default.config();
 // this calls the database connection
 (0, index_1.connectDB)();
 const app = (0, express_1.default)();
-// for cors
 const allowedOrigins = [
     "http://localhost:5173",
     "https://ilearn-sq12.netlify.app",
