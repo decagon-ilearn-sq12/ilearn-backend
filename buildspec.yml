@@ -6,11 +6,11 @@ phases:
     runtime-versions:
       nodejs: latest
     commands:
-      - npm install -g typescript
-      # - rm -rf node_modules
-      # - rm -f package-lock.json
-      # - npm cache clean --force
-      - npm install
+      - sudo npm install -g typescript
+      - sudo rm -rf node_modules
+      - sudo rm -f package-lock.json
+      - sudo npm cache clean --force
+      - sudo npm install
   build:
     commands:
       - tsc
