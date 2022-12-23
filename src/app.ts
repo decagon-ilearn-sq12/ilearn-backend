@@ -18,7 +18,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: ['http://localhost:5173', 'https://ilearn-sq12.netlify.app'] }));
 app.use(express.json());
 app.use(logger("dev"));
 app.use(cookieParser());
