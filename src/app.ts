@@ -1,7 +1,7 @@
 import express from "express";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
-// import cors from "cors";
+import cors from "cors";
 import usersRouter from "./routes/usersRoutes";
 import coursesRouter from "./routes/coursesRoutes";
 import { connectDB } from "./Config/index";
@@ -19,12 +19,12 @@ connectDB();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://ilearn-sq12.netlify.app",
-];
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://ilearn-sq12.netlify.app",
+// ];
 
-// app.use(cors({ origin: "https://ilearn-sq12.netlify.app" }));
+app.use(cors());
 app.use(express.json());
 app.use(logger("dev"));
 app.use(cookieParser());
