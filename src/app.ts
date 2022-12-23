@@ -20,11 +20,15 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://ilearn-sq12.netlify.app",
+  'http://localhost:5173',
+  'https://ilearn-sq12.netlify.app'
 ];
 
-app.use(cors());
+const options: cors.CorsOptions = {
+  origin: allowedOrigins
+};
+
+app.use(cors(options));
 app.use(express.json());
 app.use(logger("dev"));
 app.use(cookieParser());
@@ -34,7 +38,7 @@ app.use("/users", usersRouter);
 app.use("/courses", coursesRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).send("api is running");
+  res.status(200).send("api is running...");
 });
 // not found error handler
 app.use(notFound);
