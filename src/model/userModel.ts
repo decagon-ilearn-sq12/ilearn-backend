@@ -1,5 +1,7 @@
 import { Sequelize, Model, DataTypes } from "sequelize";
 import { db } from "../Config/index";
+import { courseInstance } from "./courseModel";
+import { ReminderInstance } from "./reminderModel";
 
 export interface UserAttributes {
   [x: string]: any;
@@ -11,9 +13,12 @@ export interface UserAttributes {
   userType: string;
   verified: boolean;
   salt: string;
+  image: string;
+  rating: number
 }
 
 export class UserInstance extends Model<UserAttributes> {
+
   declare id: string;
   declare email: string;
   declare name: string;
@@ -22,6 +27,9 @@ export class UserInstance extends Model<UserAttributes> {
   declare userType: string;
   declare verified: boolean;
   declare salt: string;
+  declare image: string;
+  declare rating: number
+
 }
 
 UserInstance.init(
@@ -29,7 +37,7 @@ UserInstance.init(
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      // defaultValue: DataTypes.UUIDV4,
+      //defaultValue: DataTypes.UUIDV4,
       allowNull: false,
     },
     email: {
@@ -76,8 +84,25 @@ UserInstance.init(
     },
     userType: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        customValidator: (value: any) => {
+          const enums = ["Tutor", "Student"]; // to be changed to small letter
+          if (!enums.includes(value)) {
+            throw new Error("value should be a Student or a Tutor");
+          }
+        },
+      },
+    },
+    image: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
+    rating: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+
   },
 
   {
@@ -85,3 +110,17 @@ UserInstance.init(
     tableName: "user",
   }
 );
+UserInstance.hasMany(courseInstance, {
+  foreignKey: "tutorId",
+  as: "course",
+});
+
+UserInstance.hasMany(ReminderInstance, {
+  foreignKey: "userId",
+  as: "reminder",
+});
+
+courseInstance.hasOne(UserInstance, {
+  foreignKey: "tutorId",
+  as: "user",
+});

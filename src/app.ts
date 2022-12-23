@@ -1,9 +1,9 @@
 import express from "express";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
-
-import usersRouter from "./routes/usersroute";
-
+import cors from "cors";
+import usersRouter from "./routes/usersRoutes";
+import coursesRouter from "./routes/coursesRoutes";
 import { connectDB } from "./Config/index";
 import dotenv from "dotenv";
 import {
@@ -11,23 +11,25 @@ import {
   errorHandler,
   notFound,
 } from "./Middlewares/errorMiddleware";
+
 dotenv.config();
 
 // this calls the database connection
 connectDB();
 
 const app = express();
-
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(logger("dev"));
 app.use(cookieParser());
 
 //routes
 app.use("/users", usersRouter);
-app.use("/", (req, res) => {
-  res.status(200).send("api is running...");
-});
+app.use("/courses", coursesRouter);
 
+app.get("/", (req, res) => {
+  res.status(200).send("api is running");
+});
 // not found error handler
 app.use(notFound);
 
