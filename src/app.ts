@@ -19,10 +19,10 @@ connectDB();
 
 const app = express();
 
-// const allowedOrigins = [
-//   "http://localhost:5173",
-//   "https://ilearn-sq12.netlify.app",
-// ];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://ilearn-sq12.netlify.app",
+];
 
 app.use(cors());
 app.use(express.json());
