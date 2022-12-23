@@ -7,6 +7,9 @@ phases:
       nodejs: latest
     commands:
       - npm install -g typescript
+      - rm -rf node_modules
+      - rm -f package-lock.json
+      - npm cache clean --force
       - npm install
   build:
     commands:
