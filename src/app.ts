@@ -25,11 +25,7 @@ const allowedOrigins = [
   "https://ilearn-sq12.netlify.app",
 ];
 
-const options: cors.CorsOptions = {
-  origin: allowedOrigins,
-};
-
-app.use(cors(options));
+app.use(cors({ origin: "https://ilearn-sq12.netlify.app" }));
 app.use(express.json());
 app.use(logger("dev"));
 app.use(cookieParser());
