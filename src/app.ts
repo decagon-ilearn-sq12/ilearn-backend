@@ -19,15 +19,6 @@ connectDB();
 
 const app = express();
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://ilearn-sq12.netlify.app'
-];
-
-const options: cors.CorsOptions = {
-  origin: allowedOrigins
-};
-
 app.use(cors({origin: "*"}));
 app.use(express.json());
 app.use(logger("dev"));
