@@ -28,7 +28,7 @@ const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
 
-app.use(cors(options));
+app.use(cors({origin: "*"}));
 app.use(express.json());
 app.use(logger("dev"));
 app.use(cookieParser());
