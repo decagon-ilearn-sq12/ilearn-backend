@@ -6,7 +6,8 @@
   "author": "Oluwaseyi <oluwaseyi.makinde@decagon.dev>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon build/app.js",
+    "start": "build/app.js",
+    "dev": "nodemon build/app.js",
     "compile": "tsc -w",
     "test": "jest",
     "test:watch": "jest --watch"
